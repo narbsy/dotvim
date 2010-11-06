@@ -1,0 +1,2 @@
+map <C-R> :RunSpec<Enter>
+map <C-R>r :RunSpecs<Enter>
