@@ -1,10 +1,11 @@
-" Init pathogen as the first thing we do.
+let mapleader = ","
+" Init pathogen after we set our custom leader
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-autocmd
 syntax on         " very useful to have vim highlight things
-filetype on       " detect filetype
+filetype on	  " detect filetype
+filetype plugin on  " now for plugins; specifically, NERDCommenter
 
 " General options
 set nocompatible  " don't care about compatibility with vi
@@ -64,6 +65,7 @@ highlight BadWhitespace ctermbg=red guibg=red
 
 " File specifics
 augroup text
+  autocmd!
   " Text files are 'human readable'
   autocmd BufNewFile,BufRead *.txt set filetype=human
   " For human-language files, format text as we type to 79 characters.
@@ -71,12 +73,14 @@ augroup text
 augroup END
 
 augroup python
+  autocmd!
   " Python is funny like that
   autocmd BufNewFile,BufRead *.py,*pyw set shiftwidth=4 tabstop=8 expandtab
   autocmd BufNewFile,BufRead *.py,*.pyw match BadWhitespace /^\t\+/
 augroup END
 
 augroup clike
+  autocmd!
   " Have automatic indentation for c-like languages
   autocmd FileType c,cpp,slang set cindent
   " For C itself, make sure we automatically insert the comment leader on
@@ -85,11 +89,13 @@ augroup clike
 augroup END
 
 augroup sadistic
+  autocmd!
   autocmd FileType perl set smartindent
   autocmd FileType make set noexpandtab shiftwidth=8
 augroup END
 
 augroup web
+  autocmd!
   " Format html as we type, but leave long lines alone if we're editing them.
   autocmd FileType html set formatoptions+=tl
   autocmd FileType css set smartindent
@@ -104,5 +110,18 @@ else
   colorscheme dante
 endif
 
+" Key mappings
+" Navigate through splits, with a cycle fowards and backwards
+nnoremap <F6> <C-W>w
+nnoremap <S-F6> <C-W>W
+
+" remap things for tabs to make things easier
+nmap Z :tabprev<cr>
+nmap X :tabnext<cr>
+
+" Save with space. What an awesome/terrible twitch.
+noremap <Space> :w<cr>
+
 " Plugin options
-let NERDSpaceDelims=1
+let NERDSpaceDelims=1 " A space between comments and code, please
+
