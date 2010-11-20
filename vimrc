@@ -1,11 +1,10 @@
-let mapleader = ","
 " Init pathogen after we set our custom leader
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 syntax on         " very useful to have vim highlight things
 filetype on	  " detect filetype
-filetype plugin on  " now for plugins; specifically, NERDCommenter
+filetype plugin indent on  " now for plugins; specifically, NERDCommenter
 
 " General options
 set nocompatible  " don't care about compatibility with vi
@@ -30,6 +29,7 @@ set wrap linebreak textwidth=0  "softwrap lines
 set showmatch     " show brace matching
 set matchtime=3   " for 3 millis
 set whichwrap=h,l,~,[,] " movement and convert case wrap over line breaks
+let mapleader = ","
 
 " Search nonsense
 set ignorecase    " case insensitive for ease
