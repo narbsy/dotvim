@@ -102,6 +102,38 @@ augroup web
   autocmd FileType html,css set noexpandtab tabstop=2
 augroup END
 
+augroup org
+  " g:org_agenda_dirs specify directories that, along with 
+  " their subtrees, are searched for list of .org files when
+  " accessing EditAgendaFiles().  Specify your own here, otherwise
+  " default will be for g:org_agenda_dirs to hold single
+  " directory which is directory of the first .org file opened
+  " in current Vim instance:
+  " Below is line I use in my Windows install:
+  "let g:org_agenda_dirs=["c:/users/herbert/documents/my\ dropbox","c:/users/herbert/desktop"]
+
+  " vars below are used to define default Todo list and
+  " default Tag list.  Will be changed in near future so
+  " that these are defined by config lines in each .org
+  " file itself, but now these are where you can change things:
+  let g:org_todo_setup='TODO | DONE'
+  " while g:org_tag_setup is itself a string
+  let g:org_tag_setup='{@home(h) @work(w) @tennisclub(t)} \n {easy(e) hard(d)} \n {computer(c) phone(p)}'
+
+  " leave these as is:
+  au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
+  " guioption -L removes left scrollbar, which is especially 
+  " irritating when split vertical windows appear in VimOrganizer
+  au BufRead,BufNewFile *.org set guioptions-=L 
+  au BufRead,BufNewFile *.org colorscheme org_dark
+  au BufRead,BufNewFile *.org call org#SetOrgFileType()
+  au BufRead *.org :PreLoadTags
+  au BufWrite *.org :PreWriteTags
+  au BufWritePost *.org :PostWriteTags
+
+  au BufRead,BufNewFile *.org call OrgModeKeys()
+augroup END
+
 " gvim specifics:
 if has("gui_running")
   colorscheme wombat
@@ -125,3 +157,9 @@ noremap <Space> :w<cr>
 " Plugin options
 let NERDSpaceDelims=1 " A space between comments and code, please
 
+function! OrgModeKeys()
+  map <silent> <buffer>   <leader>h   :call OrgMoveLevel(line("."),'left')<CR>
+  map <silent> <buffer>   <leader>l  :call OrgMoveLevel(line("."),'right')<CR>
+  map <silent> <buffer>   <leader>k     :call OrgMoveLevel(line("."),'up')<CR>
+  map <silent> <buffer>   <leader>j   :call OrgMoveLevel(line("."),'down')<CR>
+endfunction
