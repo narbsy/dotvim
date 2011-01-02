@@ -110,7 +110,7 @@ augroup org
   " directory which is directory of the first .org file opened
   " in current Vim instance:
   " Below is line I use in my Windows install:
-  "let g:org_agenda_dirs=["c:/users/herbert/documents/my\ dropbox","c:/users/herbert/desktop"]
+  let g:org_agenda_dirs=["~/orgfiles"]
 
   " vars below are used to define default Todo list and
   " default Tag list.  Will be changed in near future so
@@ -159,7 +159,7 @@ let NERDSpaceDelims=1 " A space between comments and code, please
 
 function! OrgModeKeys()
   map <silent> <buffer>   <leader>h   :call OrgMoveLevel(line("."),'left')<CR>
-  map <silent> <buffer>   <leader>l  :call OrgMoveLevel(line("."),'right')<CR>
-  map <silent> <buffer>   <leader>k     :call OrgMoveLevel(line("."),'up')<CR>
+  map <silent> <buffer>   <leader>l   :call OrgMoveLevel(line("."),'right')<CR>
+  map <silent> <buffer>   <leader>k   :call OrgMoveLevel(line("."),'up')<CR>
   map <silent> <buffer>   <leader>j   :call OrgMoveLevel(line("."),'down')<CR>
 endfunction
