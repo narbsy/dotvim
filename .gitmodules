@@ -19,3 +19,6 @@
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = git://github.com/ervandew/supertab.git
+[submodule "bundle/vim-organizer"]
+	path = bundle/vim-organizer
+	url = https://github.com/hsitz/VimOrganizer.git
