@@ -1,10 +1,10 @@
-[submodule ".vim/bundle/rails"]
+[submodule "bundle/rails"]
 	path = bundle/rails
 	url = git://github.com/tpope/vim-rails.git
-[submodule ".vim/bundle/nerdtree"]
+[submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
-[submodule ".vim/bundle/nerdcommenter"]
+[submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
 	url = git://github.com/scrooloose/nerdcommenter.git
 [submodule "bundle/snipmate"]
