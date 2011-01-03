@@ -118,7 +118,7 @@ augroup org
   " file itself, but now these are where you can change things:
   let g:org_todo_setup='TODO | DONE'
   " while g:org_tag_setup is itself a string
-  let g:org_tag_setup='{@home(h) @work(w) @tennisclub(t)} \n {easy(e) hard(d)} \n {computer(c) phone(p)}'
+  let g:org_tag_setup='maven(m) documentation(d) config(f) chameleon(c) hawk(h) stinger(s) wave(w) beetle(b) db(q)'
 
   " leave these as is:
   au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
@@ -163,3 +163,4 @@ function! OrgModeKeys()
   map <silent> <buffer>   <leader>k   :call OrgMoveLevel(line("."),'up')<CR>
   map <silent> <buffer>   <leader>j   :call OrgMoveLevel(line("."),'down')<CR>
 endfunction
+
